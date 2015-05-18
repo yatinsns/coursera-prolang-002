@@ -1,1 +1,1 @@
-Excercises for https://class.coursera.org/proglang-002/
+Exercises for https://class.coursera.org/proglang-002/
