@@ -6,4 +6,4 @@ In case you encounter:
 	
 	sml: unable to determine architecture/operating system
 
-Refer this [link](sml: unable to determine architecture/operating system).
+Refer this [link](https://github.com/yatinsns/coursera-prolang-002).
