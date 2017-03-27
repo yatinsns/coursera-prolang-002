@@ -11,3 +11,14 @@ fun number_in_month(ds: (int * int * int) list, month: int) =
 fun number_in_months(ds: (int * int * int) list, months: int list) =
   if null months then 0
   else number_in_month(ds, hd months) + number_in_months(ds, tl months)
+
+fun dates_in_month(ds: (int * int * int) list, month: int) =
+  if null ds
+  then []
+  else if #2 (hd ds) = month
+  then hd(ds) :: dates_in_month(tl ds, month)
+  else dates_in_month(tl ds, month)
+
+
+
+  
