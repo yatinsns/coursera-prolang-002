@@ -32,6 +32,9 @@ test("number_in_month: with all months matching",
 test("number_in_month: with none months matching",
      assert_equals_int(number_in_month([(2012, 12, 28), (2013, 12, 1)], 2), 0));
 
+test("number_in_month: with no dates",
+     assert_equals_int(number_in_month([], 2), 0));
+
 (* Testcases for number_in_months *)
 
 test("number_in_months: with some months matching",
@@ -39,6 +42,15 @@ test("number_in_months: with some months matching",
 
 test("number_in_months: with none months matching",
      assert_equals_int(number_in_months([(2012, 2, 28), (2013, 12, 1), (2011, 3, 31), (2011, 4, 28)], [5, 6, 7]), 0));
+
+test("number_in_months: with no months",
+     assert_equals_int(number_in_months([(2012, 2, 28), (2013, 12, 1), (2011, 3, 31), (2011, 4, 28)], []), 0));
+
+test("number_in_months: with no dates",
+     assert_equals_int(number_in_months([], [5, 6, 7]), 0));
+
+test("number_in_months: with no dates and no months",
+     assert_equals_int(number_in_months([], []), 0));
 
 (* Testcases for dates_in_month *)
 
@@ -51,6 +63,9 @@ test("dates_in_month: with all months matching",
 test("dates_in_month: with none months matching",
      assert_true(dates_in_month([(2012, 12, 28), (2013, 12, 1)], 2) = []));
 
+test("dates_in_month: with no dates",
+     assert_true(dates_in_month([], 2) = []));
+
 (* Testcases for dates_in_months *)
 
 test("dates_in_months: with some months matching",
@@ -61,5 +76,14 @@ test("dates_in_months: with all months matching",
 
 test("dates_in_months: with none months matching",
      assert_true(dates_in_months([(2012, 2, 28), (2013, 12, 1), (2011, 3, 31), (2011, 4, 28)], [5, 6, 7]) = []));
+
+test("dates_in_months: with no dates",
+     assert_true(dates_in_months([], [5, 6, 7]) = []));
+
+test("dates_in_months: with no months",
+     assert_true(dates_in_months([(2012, 2, 28), (2013, 12, 1), (2011, 3, 31), (2011, 4, 28)], []) = []));
+
+test("dates_in_months: with no dates and no months",
+     assert_true(dates_in_months([], []) = []));
 
 run();
