@@ -51,4 +51,15 @@ test("dates_in_month: with all months matching",
 test("dates_in_month: with none months matching",
      assert_true(dates_in_month([(2012, 12, 28), (2013, 12, 1)], 2) = []));
 
+(* Testcases for dates_in_months *)
+
+test("dates_in_months: with some months matching",
+     assert_true(dates_in_months([(2012, 2, 28), (2013, 12, 1), (2011, 3, 31), (2011, 4, 28)], [2, 3, 4]) = [(2012, 2, 28), (2011, 3, 31), (2011, 4, 28)]));
+
+test("dates_in_months: with all months matching",
+     assert_true(dates_in_months([(2012, 2, 28), (2013, 3, 1), (2011, 3, 31), (2011, 4, 28)], [2, 3, 4]) = [(2012, 2, 28), (2013, 3, 1), (2011, 3, 31), (2011, 4, 28)]));
+
+test("dates_in_months: with none months matching",
+     assert_true(dates_in_months([(2012, 2, 28), (2013, 12, 1), (2011, 3, 31), (2011, 4, 28)], [5, 6, 7]) = []));
+
 run();
