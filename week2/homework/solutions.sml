@@ -92,3 +92,24 @@ fun reasonable_date(date: (int * int * int)) =
       andalso #1 date > 0 andalso is_valid_day date
   end
 
+fun remove_duplicates(ls: int list) =
+  let
+      fun list_contains(ls: int list, n: int) =
+	if null ls then false
+	else if hd ls = n then true
+	else list_contains(tl ls, n)
+  in
+      if null ls then []
+      else
+	  let val tl_res = remove_duplicates(tl ls)
+	  in
+	      if list_contains(tl_res, hd ls) then tl_res
+	      else hd ls :: tl_res
+	  end
+  end
+
+fun number_in_months_challenge(ds: (int * int * int) list, months: int list) =
+  number_in_months(ds, remove_duplicates(months))
+
+fun dates_in_months_challenge(ds: (int * int * int) list, months: int list) =
+  dates_in_months(ds, remove_duplicates(months))
