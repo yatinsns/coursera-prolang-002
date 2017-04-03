@@ -35,8 +35,17 @@ fun date_to_string(d: int * int * int) =
 
 
 fun number_before_reaching_sum(sum: int, ls: int list) =
-  if hd ls > sum then 1
+  if hd ls >= sum then 1
   else 1 + number_before_reaching_sum(sum - hd ls, tl ls)
 
-				     
+
+fun what_month(day: int) =
+  let val days_in_months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  in
+      number_before_reaching_sum(day, days_in_months)
+  end
       
+fun month_range(day1: int, day2: int) =
+  if day1 > day2 then []
+  else if day1 = day2 then what_month(day1)::[]
+  else what_month(day1)::month_range(day1 + 1, day2)
