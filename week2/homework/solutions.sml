@@ -70,3 +70,25 @@ fun oldest(ds: (int * int * int) list) =
 	  
 		      
 		
+fun reasonable_date(date: (int * int * int)) =
+  let
+      val days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+      val leap_year_days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+      fun get_nth(ls: int list, n: int) =
+	if n = 1 then hd ls
+	else get_nth(tl ls, n - 1)
+
+      fun is_valid_day(date: (int * int * int)) =
+	let val year = #3 date
+	in
+	    if year mod 400 = 0 orelse (year mod 4 = 0 andalso year mod 100 <> 0)
+	    then #1 date <= get_nth(leap_year_days, #2 date)
+	    else #1 date <= get_nth(days, #2 date)
+	end
+  in
+      #3 date > 0
+      andalso #2 date >= 1 andalso #2 date <=12
+      andalso #1 date > 0 andalso is_valid_day date
+  end
+
