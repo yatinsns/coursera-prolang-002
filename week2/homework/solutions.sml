@@ -80,16 +80,16 @@ fun reasonable_date(date: (int * int * int)) =
 	else get_nth(tl ls, n - 1)
 
       fun is_valid_day(date: (int * int * int)) =
-	let val year = #3 date
+	let val year = #1 date
 	in
 	    if year mod 400 = 0 orelse (year mod 4 = 0 andalso year mod 100 <> 0)
-	    then #1 date <= get_nth(leap_year_days, #2 date)
-	    else #1 date <= get_nth(days, #2 date)
+	    then #3 date <= get_nth(leap_year_days, #2 date)
+	    else #3 date <= get_nth(days, #2 date)
 	end
   in
-      #3 date > 0
+      #1 date > 0
       andalso #2 date >= 1 andalso #2 date <=12
-      andalso #1 date > 0 andalso is_valid_day date
+      andalso #3 date > 0 andalso is_valid_day date
   end
 
 fun remove_duplicates(ls: int list) =
