@@ -37,7 +37,7 @@ fun date_to_string(d: int * int * int) =
 
 
 fun number_before_reaching_sum(sum: int, ls: int list) =
-  if hd ls >= sum then 1
+  if hd ls >= sum then 0
   else 1 + number_before_reaching_sum(sum - hd ls, tl ls)
 
 
